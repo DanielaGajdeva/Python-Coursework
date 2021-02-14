@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block body %}
+<div style="text-align: center">
+    <h1> 500 Internal Server Error </h1>
+    <h3> The server encountered an internal error. That's all we know. </h3>
+    <hr class="intro-divider">
+    <a href="{{ url_for('home.homepage') }}" class="btn btn-default btn-lg">Home</a>
+</div>
+{% endblock %}

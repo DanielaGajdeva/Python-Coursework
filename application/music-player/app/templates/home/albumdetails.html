@@ -1,0 +1,30 @@
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base.html" %}
+{% block body %}
+
+<div class="album-details d-flex justify-content-between row">
+    <div class="album-data col-md-5">
+        <img src="{{album.picturelink}}" class="img-thumbnail" />
+        <h1 class="text-center">Album name: {{album.name}}</h1>
+        <div class="d-flex justify-content-between">
+            <a href="/home/createsong/{{album.id}}" class="btn bg-info text-white">
+                Create Song
+            </a>
+            <a href="{{ url_for('home.albums') }}" class="btn bg-info text-white">Back To Albums</a>
+        </div>
+    </div>
+    <div class="album-tracks col-md-5">
+        <h1>Songs</h1>
+	{% if  not songs %}
+	   <h6>Currently there are no created songs in this album.</h6>
+	{% else %}
+    <ol>
+        {% for song in songs %}
+        <li><a href="/song/{{song.id}}"><h6>{{song.name}}</h6></a></li>
+        {% endfor %}
+    </ol>
+	{% endif %}
+    </div>
+</div>
+
+{% endblock %}

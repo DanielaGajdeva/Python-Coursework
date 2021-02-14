@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+<div class="jumbotron bg-info text-white">
+    {% if current_user.is_authenticated %}
+        <h1>Welcome, <span class="text-danger"> {{ current_user.username }}</span>!</h1>
+        <hr class="bg-white" style="height: 2px" />
+        <h2>Music Player wishes you a fun experience.</h2>
+	{% else %}
+		<h1>Welcome to Music Player!</h1>
+		<hr class="bg-white" style="height: 2px" />
+		<h2><a class="text-danger" href="{{ url_for('auth.login') }}">Login</a> if you have an account.</h2>
+		<h2><a class="text-danger" href="{{ url_for('auth.register') }}">Register</a> if you don't.</h2>
+	{% endif %}
+
+</div>
+{% endblock %}

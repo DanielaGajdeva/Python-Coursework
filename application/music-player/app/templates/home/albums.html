@@ -1,0 +1,38 @@
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base.html" %}
+{% block title %}All Albums{% endblock %}
+{% block body %}
+
+<h2 class="text-info">All Albums</h2>
+<hr class="bg-info" style="height: 2px" />
+<a href="{{ url_for('home.createalbum') }}" class="btn bg-info text-white"><h6>Create Album</h6></a>
+<hr class="bg-info" style="height: 2px" />
+
+<div>
+	{% if  not albums %}
+       <div class-"center">
+	   <h6 class="text-center">Currently there are no created albums in your directory.</h6>
+	   </div>
+	{% else %}	
+	<div class="row text-center">
+    {% for album in albums %}
+	
+            <div class="col-lg-3 col-md-6 hero-feature">
+                <div class="thumbnail">
+                    <img  class="width: 180px; height: 286px;" src="{{album.picturelink}}" alt="">
+                    <div class="caption">
+                        <h3>{{album.name}}</h3>                        
+                        <p class="d-flex justify-content-around">
+						    <a href="/albumdetails/{{album.id}}" class="btn btn-info">Details</a>
+						    <a href="/deletealbum/{{album.id}}" class="btn btn-danger">Delete</a>
+						</p>
+                    </div>
+                </div>
+            </div>
+
+	{% endfor %}
+	</div>
+
+	{% endif %}
+
+{% endblock %}
